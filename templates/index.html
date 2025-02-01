@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DatabaseFlask! - Main Folder</title>
+</head>
+<body>
+    <h1>DatabaseFlask!</h1>
+
+    {% if subpath %}
+        <p><a href="{{ url_for('index') }}">⬅ Quay lại thư mục gốc</a></p>
+    {% endif %}
+
+    <h2>📁 Thư mục:</h2>
+    <ul>
+        {% for folder in folders %}
+            <li><a href="{{ url_for('index', subpath=subpath + '/' + folder) }}">{{ folder }}/</a></li>
+        {% endfor %}
+        {% for file in files %}
+            <li><a href="{{ url_for('download_file', filepath=subpath + '/' + file) }}">{{ file }}</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
